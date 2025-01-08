@@ -1,0 +1,60 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header, footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #007BFF;
+    color: white;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem;
+}
+
+.content, .sidebar {
+    flex: 1 1 50%; /* By default, each takes up 50% width */
+    box-sizing: border-box;
+    padding: 1rem;
+}
+
+.content {
+    background-color: #F8F9FA;
+}
+
+.sidebar {
+    background-color: #E9ECEF;
+}
+
+footer {
+    font-size: 1.2rem;
+}
+
+/* Responsive Design Using Media Queries */
+@media (max-width: 768px) {
+    .content, .sidebar {
+        flex: 1 1 100%; /* Stack elements vertically */
+    }
+}
+
+/* Width and Max-Width */
+.content, .sidebar {
+    max-width: 600px; /* Restrict maximum width */
+    margin: 0 auto;   /* Center when smaller than max-width */
+}
+
+/* Using vw for scalable font sizes */
+h1 {
+    font-size: 5vw; /* Scales with the width of the viewport */
+}
+
+p {
+    font-size: 2vw; /* Text scales dynamically */
+}
