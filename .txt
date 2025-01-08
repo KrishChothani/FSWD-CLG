@@ -1,0 +1,7 @@
+login Page
+- name 
+- password
+- roll no
+- phone number
+- Email Id
+
