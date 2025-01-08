@@ -21,8 +21,8 @@ const complexSum = {
   real: complex1.real + complex2.real,
   imaginary: complex1.imaginary + complex2.imaginary,
   magnitude: Math.sqrt(
-    (complex1.real + complex2.real) ** 2 +
-      (complex1.imaginary + complex2.imaginary) ** 2
+    (complex1.real - complex2.real) ** 2 +
+      (complex1.imaginary - complex2.imaginary) ** 2
   ),
 };
 
