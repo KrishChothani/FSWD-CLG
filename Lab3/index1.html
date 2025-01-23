@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Responsive Web Page</title>
+  <title>Responsive Webpage</title>
   <style>
     /* Base styling */
     body {
@@ -15,32 +15,16 @@
     header {
       background-color: #4CAF50;
       color: white;
-      padding: 1em;
       text-align: center;
-    }
-
-    nav {
-      display: flex;
-      justify-content: space-around;
-      background-color: #333;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      padding: 1em;
-      display: block;
-    }
-
-    nav a:hover {
-      background-color: #575757;
+      padding: 1em 0;
     }
 
     .container {
       padding: 1em;
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-around;
+      gap: 1em;
+      justify-content: center;
     }
 
     .card {
@@ -48,15 +32,15 @@
       border: 1px solid #ddd;
       border-radius: 5px;
       padding: 1em;
-      margin: 1em;
-      flex: 1 1 calc(33.333% - 2em);
-      box-sizing: border-box;
       text-align: center;
+      flex: 1 1 calc(33.333% - 2em); /* Default for larger screens */
+      max-width: 300px;
     }
 
     .card img {
-      max-width: 100%;
-      height: auto;
+      width: 100%; /* Scale image to fit container */
+      max-width: 100%; /* Prevent overflowing */
+      height: auto; /* Maintain aspect ratio */
       border-radius: 5px;
     }
 
@@ -67,53 +51,43 @@
       padding: 1em 0;
     }
 
-    /* Responsive styling */
+    /* Responsive Styling */
     @media (max-width: 768px) {
       .card {
-        flex: 1 1 calc(50% - 2em);
+        flex: 1 1 calc(50% - 2em); /* Adjust for tablets */
       }
     }
 
     @media (max-width: 480px) {
-      nav {
-        flex-direction: column;
-      }
-
       .card {
-        flex: 1 1 100%;
+        flex: 1 1 100%; /* Full width for small devices */
       }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Welcome to My Responsive Page</h1>
+    <h1>Responsive Webpage</h1>
   </header>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#contact">Contact</a>
-  </nav>
   <div class="container">
     <div class="card">
       <img src="https://images.pexels.com/photos/1188083/pexels-photo-1188083.png?cs=srgb&dl=sea-dawn-nature-1188083.jpg&fm=jpg" alt="Sample Image">
       <h2>Card Title 1</h2>
-      <p>This is some text for card 1.</p>
+      <p>This is some content for card 1.</p>
     </div>
     <div class="card">
       <img   src="https://images.pexels.com/photos/443446/pexels-photo-443446.jpeg?cs=srgb&dl=daylight-forest-glossy-443446.jpg&fm=jpg" alt="Sample Image">
       <h2>Card Title 2</h2>
-      <p>This is some text for card 2.</p>
+      <p>This is some content for card 2.</p>
     </div>
     <div class="card">
       <img src="https://www.thewowstyle.com/wp-content/uploads/2015/01/nature-images..jpg" alt="Sample Image">
       <h2>Card Title 3</h2>
-      <p>This is some text for card 3.</p>
+      <p>This is some content for card 3.</p>
     </div>
   </div>
   <footer>
-    <p>© 2025 Responsive Web Page. All rights reserved.</p>
+    <p>© 2025 Responsive Webpage. All rights reserved.</p>
   </footer>
 </body>
 </html>

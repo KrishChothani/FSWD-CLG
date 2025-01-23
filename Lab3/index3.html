@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Responsive Web Page</title>
+  <title>Responsive Web Page with Media Queries</title>
   <style>
-    /* Base styling */
+    /* Base styles */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -15,13 +15,13 @@
     header {
       background-color: #4CAF50;
       color: white;
-      padding: 1em;
+      padding: 1em 0;
       text-align: center;
     }
 
     nav {
       display: flex;
-      justify-content: space-around;
+      justify-content: center;
       background-color: #333;
     }
 
@@ -37,10 +37,11 @@
     }
 
     .container {
-      padding: 1em;
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-around;
+      padding: 1em;
+      gap: 1em;
+      justify-content: center;
     }
 
     .card {
@@ -48,14 +49,13 @@
       border: 1px solid #ddd;
       border-radius: 5px;
       padding: 1em;
-      margin: 1em;
-      flex: 1 1 calc(33.333% - 2em);
-      box-sizing: border-box;
       text-align: center;
+      flex: 1 1 calc(33.333% - 2em); /* Default for larger screens */
+      box-sizing: border-box;
     }
 
     .card img {
-      max-width: 100%;
+      width: 100%;
       height: auto;
       border-radius: 5px;
     }
@@ -67,27 +67,37 @@
       padding: 1em 0;
     }
 
-    /* Responsive styling */
+    /* Media Queries */
+    /* Tablet devices (max-width: 768px) */
     @media (max-width: 768px) {
       .card {
         flex: 1 1 calc(50% - 2em);
       }
-    }
 
-    @media (max-width: 480px) {
       nav {
         flex-direction: column;
       }
+    }
 
+    /* Mobile devices (max-width: 480px) */
+    @media (max-width: 480px) {
       .card {
-        flex: 1 1 100%;
+        flex: 1 1 100%; 
+      }
+
+      header {
+        font-size: 1.2em;
+      }
+
+      nav a {
+        padding: 0.8em; 
       }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Welcome to My Responsive Page</h1>
+    <h1>Responsive Web Page with Media Queries</h1>
   </header>
   <nav>
     <a href="#home">Home</a>
@@ -99,21 +109,21 @@
     <div class="card">
       <img src="https://images.pexels.com/photos/1188083/pexels-photo-1188083.png?cs=srgb&dl=sea-dawn-nature-1188083.jpg&fm=jpg" alt="Sample Image">
       <h2>Card Title 1</h2>
-      <p>This is some text for card 1.</p>
+      <p>This is some content for card 1.</p>
     </div>
     <div class="card">
-      <img   src="https://images.pexels.com/photos/443446/pexels-photo-443446.jpeg?cs=srgb&dl=daylight-forest-glossy-443446.jpg&fm=jpg" alt="Sample Image">
+      <img src="https://images.pexels.com/photos/1188083/pexels-photo-1188083.png?cs=srgb&dl=sea-dawn-nature-1188083.jpg&fm=jpg" alt="Sample Image">
       <h2>Card Title 2</h2>
-      <p>This is some text for card 2.</p>
+      <p>This is some content for card 2.</p>
     </div>
     <div class="card">
-      <img src="https://www.thewowstyle.com/wp-content/uploads/2015/01/nature-images..jpg" alt="Sample Image">
+      <img src="https://images.pexels.com/photos/1188083/pexels-photo-1188083.png?cs=srgb&dl=sea-dawn-nature-1188083.jpg&fm=jpg" alt="Sample Image">
       <h2>Card Title 3</h2>
-      <p>This is some text for card 3.</p>
+      <p>This is some content for card 3.</p>
     </div>
   </div>
   <footer>
-    <p>© 2025 Responsive Web Page. All rights reserved.</p>
+    <p>© 2025 Responsive Web Page with Media Queries. All rights reserved.</p>
   </footer>
 </body>
 </html>
