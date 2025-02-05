@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage Manager</title>
+    <style>
+        /* Gradient Background */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1e1e2e, #282a36);
+            color: white;
+        }
+
+        /* Glassmorphism Container */
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            width: 380px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Title */
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            color: white;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .btn-add { background: linear-gradient(135deg, #28a745, #218838); }
+        .btn-find { background: linear-gradient(135deg, #007bff, #0056b3); }
+        .btn-remove { background: linear-gradient(135deg, #dc3545, #a71d2a); }
+
+        /* Button Hover Effects */
+        .btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        /* Subtle Glow Effect */
+        .btn-add:hover { box-shadow: 0px 0px 10px #28a745; }
+        .btn-find:hover { box-shadow: 0px 0px 10px #007bff; }
+        .btn-remove:hover { box-shadow: 0px 0px 10px #dc3545; }
+
+    </style>
+    <script>
+        const setItem = () => {
+            var key = window.prompt("Enter the key:");
+            var value = window.prompt("Enter the value:");
+            if (key && value) {
+                localStorage.setItem(key, value);
+                alert("✅ Item added successfully!");
+            } else {
+                alert("⚠️ Key and Value cannot be empty.");
+            }
+        }
+
+        const getItem = () => {
+            var key = window.prompt("Enter the key:");
+            if (!key) {
+                alert("⚠️ Please enter a key.");
+                return;
+            }
+            var value = localStorage.getItem(key);
+            if (value !== null) {
+                alert(`🔍 The value for "${key}" is: ${value}`);
+            } else {
+                alert("❌ Key not found.");
+            }
+        }
+
+        const removeItem = () => {
+            var key = window.prompt("Enter the key to remove:");
+            if (!key) {
+                alert("⚠️ Please enter a key.");
+                return;
+            }
+            if (localStorage.getItem(key) !== null) {
+                localStorage.removeItem(key);
+                alert("🗑️ Item removed successfully!");
+            } else {
+                alert("❌ Key not found.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>🌙 Local Storage Manager</h1>
+        <button class="btn btn-add" onclick="setItem()">➕ Add Item</button>
+        <button class="btn btn-find" onclick="getItem()">🔍 Find Item</button>
+        <button class="btn btn-remove" onclick="removeItem()">🗑️ Remove Item</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geolocation API</title>
+    <script>
+        if (!navigator.geolocation) {
+            alert("Geo-location is not supported by your browser.");
+        }
+
+        const getLocation = () => {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    let { latitude, longitude } = position.coords;
+                    alert(`📍 Your Location:\nLatitude: ${latitude}\nLongitude: ${longitude}`);
+                },
+                (error) => {
+                    alert("❌ Error retrieving location.");
+                }
+            );
+        };
+    </script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1e1e2e;
+            color: white;
+        }
+
+        button {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            font-size: 18px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 0px 10px rgba(0, 123, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <button onclick="getLocation()">📍 Get Your Location</button>
+</body>
+</html>
