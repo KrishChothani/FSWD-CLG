@@ -3,98 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vue.js Custom Directives</title>
+    <title>Vue.js Custom Directives with Tailwind</title>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .card {
-            background: #f9f9f9;
-            padding: 15px;
-            margin: 10px;
-            border-radius: 5px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-        }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
 
-<div id="app">
-    <!-- I. Transform Text to Uppercase on Click -->
-    <h2 v-uppercase class="clickable-text">Click Me to Uppercase</h2>
+    <div id="app" class="bg-white shadow-lg rounded-lg p-6 max-w-md w-full">
+        <h1 class="text-2xl font-bold text-center text-blue-600">Vue.js Uppercase Converter</h1>
 
-    <!-- II. Dynamic List with Custom Directive -->
-    <h2>Dynamic List</h2>
-    <input v-model="newItem" placeholder="Add an item" />
-    <button @click="addItem">Add</button>
-    <ul>
-        <li v-for="item in items" :key="item" v-highlight>{{ item }}</li>
-    </ul>
+        <!-- User Input -->
+        <div class="mt-4">
+            <label class="block text-gray-700 font-medium">Enter Text:</label>
+            <input v-model="userText"
+                   class="w-full border rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-400 outline-none" 
+                   placeholder="Type something...">
+            
+            <!-- Convert Button -->
+            <button @click="convertText"
+                    class="bg-blue-600 text-white px-4 py-2 rounded-lg mt-2 hover:bg-blue-700 w-full">
+                Convert to Uppercase
+            </button>
+        </div>
 
-    <!-- III. Format Date with Custom Directive -->
-    <h2>Formatted Dates</h2>
-    <p v-format-date="date1"></p>
-    <p v-format-date="date2"></p>
-</div>
+        <!-- Display Converted Text -->
+        <div class="mt-4 p-4 bg-gray-200 rounded-lg text-lg font-semibold text-blue-600" v-uppercase="convertedText"></div>
+    </div>
 
-<script>
-const app = Vue.createApp({
-    data() {
-        return {
-            newItem: '',
-            items: ['Vue.js', 'React', 'Angular'],
-            date1: '2025-03-05T10:30:00Z',
-            date2: '2025-02-28T18:45:00Z'
-        };
-    },
-    methods: {
-        addItem() {
-            if (this.newItem.trim()) {
-                this.items.push(this.newItem.trim());
-                this.newItem = '';
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    userText: '',    // Stores user input
+                    convertedText: '' // Stores the uppercase text
+                };
+            },
+            methods: {
+                convertText() {
+                    this.convertedText = this.userText; // Pass text for conversion
+                }
             }
-        }
-    }
-});
-
-
-app.directive('uppercase', {
-    beforeMount(el) {
-        el.style.cursor = 'pointer';
-        el.style.color = 'blue';
-        el.addEventListener('click', () => {
-            el.textContent = el.textContent.toUpperCase();
         });
-    }
-});
 
-
-app.directive('highlight', {
-    mounted(el) {
-        el.style.backgroundColor = '#ffeb3b';
-        el.style.padding = '5px';
-        el.style.borderRadius = '3px';
-    }
-});
-
-
-app.directive('format-date', {
-    mounted(el, binding) {
-        const date = new Date(binding.value);
-        el.textContent = date.toLocaleString('en-US', { 
-            weekday: 'long', 
-            year: 'numeric', 
-            month: 'long', 
-            day: 'numeric', 
-            hour: '2-digit', 
-            minute: '2-digit' 
+        // Custom Directive to Convert Text to Uppercase
+        app.directive('uppercase', {
+            beforeUpdate(el, binding) {
+                el.textContent = binding.value.toUpperCase(); // Convert text to uppercase
+            }
         });
-    }
-});
 
-app.mount('#app');
-</script>
+        app.mount('#app');
+    </script>
 
 </body>
 </html>
