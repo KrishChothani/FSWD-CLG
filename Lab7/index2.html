@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js Date Formatter Directive</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+
+    <div id="app" class="bg-white shadow-lg rounded-lg p-6 max-w-md w-full">
+        <h1 class="text-2xl font-bold text-center text-blue-600">Vue.js Date Formatter</h1>
+
+        <!-- Input for Selecting Date -->
+        <div class="mt-4">
+            <label class="block text-gray-700 font-medium">Select a Date:</label>
+            <input type="date" v-model="selectedDate" 
+                   class="w-full border rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-400 outline-none">
+        </div>
+
+        <!-- Display Formatted Date -->
+        <div class="mt-4 p-4 bg-gray-200 rounded-lg text-lg font-semibold text-blue-600" 
+             v-format-date="selectedDate">
+        </div>
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    selectedDate: '' // Stores user-selected date
+                };
+            }
+        });
+
+        app.directive('format-date', {
+            beforeMount(el, binding) {
+                el.textContent = formatDate(binding.value); 
+            },
+            updated(el, binding) {
+                el.textContent = formatDate(binding.value); 
+            }
+        });
+
+        // Function to Format Date
+        function formatDate(dateString) {
+            if (!dateString) return "Please select a date"; 
+
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('en-US', options);
+        }
+
+        app.mount('#app');
+    </script>
+
+</body>
+</html>
